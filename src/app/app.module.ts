@@ -7,9 +7,9 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BudgetsComponent } from './budgets/budgets.component';
+import { ExpenseDetailsComponent } from './expense-details/expense-details.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { HomeComponent } from './home/home.component';
-import { ExpensesItemComponent } from './expenses-item/expenses-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { ExpensesItemComponent } from './expenses-item/expenses-item.component';
     ExpensesComponent,
     HomeComponent,
     BudgetsComponent,
-    ExpensesItemComponent,
+    ExpenseDetailsComponent,
   ],
   imports: [
     BrowserModule,

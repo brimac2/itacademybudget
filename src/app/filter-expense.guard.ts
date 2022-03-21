@@ -19,7 +19,7 @@ export class FilterExpenseGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (route.paramMap.get('id') === '1') {
+    if (route.paramMap.get('id') !== '1') {
       return true;
     } else {
       return false;
