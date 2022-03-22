@@ -16,4 +16,12 @@ export class ExpensesComponent implements OnInit {
   ngOnInit(): void {
     this.expenses = this.expensesService.loadExpenses();
   }
+
+  expensesSum(): number {
+    let tempSum = 0;
+    this.expenses.forEach((expense) => {
+      tempSum += Number(expense.amount);
+    });
+    return tempSum;
+  }
 }
