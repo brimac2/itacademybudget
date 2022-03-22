@@ -28,7 +28,7 @@
   <tbody>
     <tr *ngFor="let expense of expenses">
       <td>
-        <a [routerLink]="['/expense/', expense.id]">{{ expense.name }}</a>
+        <a routerLink="/expense/{{ expense.id }}">{{ expense.name }}</a>
       </td>
       <td>{{ expense.date }}</td>
       <td>{{ expense.amount | currency: "EUR" }}</td>
