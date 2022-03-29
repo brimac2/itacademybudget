@@ -3,7 +3,8 @@
     {
       "date": "2022-03",
       "budget": "2000.00"
-    }],
+    }
+  ],
   "expenses": [
     {
       "name": "Groceries",
@@ -29,18 +30,65 @@
       "name": "Gas",
       "date": "2022-03-02",
       "amount": "67.22"
+    },
+    {
+      "name": "aaaaaa",
+      "date": "2022-03-02T18:03:53.000Z",
+      "amount": "111",
+      "id": "qhDlmJO"
+    },
+    {
+      "name": "bbb",
+      "date": "2022-03-15T18:08:23.000Z",
+      "amount": "123",
+      "id": "_NwHN_X"
+    },
+    {
+      "name": "Nails",
+      "date": "2022-03-30T17:12:08.000Z",
+      "amount": "30",
+      "id": "g3g4pPW"
     }
   ],
   "budgets": [
-    { "name": "Groceries", "spent": "52.12", "limit": "200.00" },
-    { "name": "Shopping", "spent": "92.55", "limit": "300.00" },
-    { "name": "Gas", "spent": "88.55", "limit": "150.00" },
-    { "name": "Entertainment", "spent": "88.55", "limit": "150.00" },
-    { "name": "Dining out", "spent": "88.55", "limit": "100.00" }
+    {
+      "name": "Groceries",
+      "spent": "52.12",
+      "limit": "200.00"
+    },
+    {
+      "name": "Shopping",
+      "spent": "92.55",
+      "limit": "300.00"
+    },
+    {
+      "name": "Gas",
+      "spent": "88.55",
+      "limit": "150.00"
+    },
+    {
+      "name": "Entertainment",
+      "spent": "88.55",
+      "limit": "150.00"
+    },
+    {
+      "name": "Dining out",
+      "spent": "88.55",
+      "limit": "100.00"
+    }
   ],
   "upcomingBills": [
-    { "name": "Electricity", "amount": "40.05" },
-    { "name": "Rent", "amount": "500.00" },
-    { "name": "Internet", "amount": "11.20" }
+    {
+      "name": "Electricity",
+      "amount": "40.05"
+    },
+    {
+      "name": "Rent",
+      "amount": "500.00"
+    },
+    {
+      "name": "Internet",
+      "amount": "11.20"
+    }
   ]
 }

@@ -1,13 +1,23 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { expensesList } from './shared/DATA';
+import { Expense } from './shared/expense';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExpensesService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
-  loadExpenses() {
-    return expensesList;
+  loadExpenses(): Observable<Expense[]> {
+    return this.httpClient.get<Expense[]>('/api/expenses');
+  }
+
+  getExpense(id: string): Observable<Expense> {
+    return this.httpClient.get<Expense>(`/api/expenses/${id}`);
+  }
+
+  addExpense(expense: Expense): Observable<Expense> {
+    return this.httpClient.post<Expense>(`/api/expenses`, expense);
   }
 }

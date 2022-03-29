@@ -1,7 +1,7 @@
-import { expensesList } from './../shared/DATA';
 import { Component, OnInit } from '@angular/core';
 import { ExpensesService } from '../expenses.service';
 import { Expense } from '../shared/expense';
+import { Observable, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-expenses',
@@ -9,19 +9,22 @@ import { Expense } from '../shared/expense';
   styleUrls: ['./expenses.component.css'],
 })
 export class ExpensesComponent implements OnInit {
-  expenses: Expense[] = [];
+  expensesList$: Observable<Expense[]> = of();
+  totalAmount: number = 0;
 
   constructor(private expensesService: ExpensesService) {}
 
   ngOnInit(): void {
-    this.expenses = this.expensesService.loadExpenses();
+    this.loadExpenses();
   }
 
-  expensesSum(): number {
-    let tempSum = 0;
-    this.expenses.forEach((expense) => {
-      tempSum += Number(expense.amount);
-    });
-    return tempSum;
+  loadExpenses(): void {
+    this.expensesList$ = this.expensesService.loadExpenses().pipe(
+      tap((expenses: Expense[]) => {
+        expenses.map((item: Expense) => {
+          this.totalAmount += parseFloat(item.amount);
+        });
+      })
+    );
   }
 }

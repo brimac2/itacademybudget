@@ -1,0 +1,39 @@
+<form (ngSubmit)="addExpense()">
+  <div class="row">
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Expense name"
+        name="name"
+        [(ngModel)]="expense.name"
+      />
+    </div>
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Date"
+        bsDatepicker
+        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+        name="date"
+        [(ngModel)]="expense.date"
+      />
+    </div>
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Amount"
+        name="amount"
+        [(ngModel)]="expense.amount"
+      />
+    </div>
+    <div class="col">
+      <button class="btn btn-primary">Add</button>
+      <button class="btn btn-primary" (click)="resetExpense()" type="button">
+        Reset
+      </button>
+    </div>
+  </div>
+</form>

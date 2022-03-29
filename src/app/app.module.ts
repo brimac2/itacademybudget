@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -10,6 +10,9 @@ import { BudgetsComponent } from './budgets/budgets.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { HomeComponent } from './home/home.component';
 import { ExpenseDetailsComponent } from './expense-details/expense-details.component';
+import { ExpensesFormComponent } from './expenses/expenses-form/expenses-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { ExpenseDetailsComponent } from './expense-details/expense-details.compo
     HomeComponent,
     BudgetsComponent,
     ExpenseDetailsComponent,
+    ExpensesFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +30,8 @@ import { ExpenseDetailsComponent } from './expense-details/expense-details.compo
     AlertModule.forRoot(),
     BsDatepickerModule,
     ProgressbarModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
