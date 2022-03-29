@@ -1,28 +1,77 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ExpensesService } from 'src/app/expenses.service';
-import { ExpenseModel } from './expense.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { map, Observable, of, startWith } from 'rxjs';
+import { ExpensesService } from '../../expenses.service';
+import { explicitLanguageValidator } from './validators/explicit-language.validator';
+import { nameNoteValidator } from './validators/name-note.validator';
+import { regulatoryValidator } from './validators/regulatory.validator';
 
 @Component({
-  selector: 'app-expenses-form',
+  selector: 'app-expense-form',
   templateUrl: './expenses-form.component.html',
   styleUrls: ['./expenses-form.component.css'],
 })
-export class ExpensesFormComponent implements OnInit {
-  expense: ExpenseModel = new ExpenseModel('', '', '');
+export class ExpenseFormComponent implements OnInit {
   @Output() expenseUpdated: EventEmitter<void> = new EventEmitter();
+  expenseForm: FormGroup;
+  maximumNoteLength = 20;
+  remainingLength$: Observable<number> = of(this.maximumNoteLength);
 
-  constructor(private expensesService: ExpensesService) {}
+  get expenseName() {
+    return this.expenseForm.get('name');
+  }
 
-  ngOnInit(): void {}
+  get expenseDate() {
+    return this.expenseForm.get('date');
+  }
+
+  get expenseAmount() {
+    return this.expenseForm.get('amount');
+  }
+
+  get expenseNote() {
+    return this.expenseForm.get('note');
+  }
+
+  constructor(private expensesService: ExpensesService) {
+    this.expenseForm = new FormGroup(
+      {
+        name: new FormControl('', {
+          validators: [Validators.required, Validators.pattern('[a-zA-Z]*')],
+        }),
+        date: new FormControl('', { validators: [Validators.required] }),
+        amount: new FormControl('', {
+          validators: [Validators.required, Validators.maxLength(5)],
+        }),
+        note: new FormControl('', {
+          updateOn: 'blur',
+          validators: [
+            Validators.maxLength(this.maximumNoteLength),
+            explicitLanguageValidator,
+          ],
+          asyncValidators: [regulatoryValidator(this.expensesService)],
+        }),
+      },
+      { validators: [nameNoteValidator] }
+    );
+  }
+
+  ngOnInit(): void {
+    this.remainingLength$ = this.expenseNote!.valueChanges.pipe(
+      startWith(''),
+      map((value: string) => this.maximumNoteLength - value.length)
+    );
+  }
 
   addExpense() {
-    this.expensesService.addExpense(this.expense).subscribe(() => {
-      this.expense = new ExpenseModel('', '', '');
+    const expense = this.expenseForm.getRawValue();
+    this.expensesService.addExpense(expense).subscribe(() => {
       this.expenseUpdated.emit();
+      this.resetExpense();
     });
   }
 
   resetExpense() {
-    this.expense = new ExpenseModel('', '', '');
+    this.expenseForm.reset();
   }
 }

@@ -20,4 +20,10 @@ export class ExpensesService {
   addExpense(expense: Expense): Observable<Expense> {
     return this.httpClient.post<Expense>(`/api/expenses`, expense);
   }
+
+  validateNote(note: string): Observable<{ valid: boolean }> {
+    return this.httpClient.post<{ valid: boolean }>(`/out`, {
+      toValidate: note,
+    });
+  }
 }
