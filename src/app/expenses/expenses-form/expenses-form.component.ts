@@ -6,6 +6,10 @@ import { explicitLanguageValidator } from './validators/explicit-language.valida
 import { nameNoteValidator } from './validators/name-note.validator';
 import { regulatoryValidator } from './validators/regulatory.validator';
 
+/*
+  Kalbant apie formą atrodo kaip ir mostly nice, ką tik reiktų padaryt, tai turbūt tai, kad forma iš karto nesuveiktų tik atsidarius puslapį, o tik po to, kai paspaudi add.
+  Nes dabar iš esmės tau automatiškai suveikia visos validacijos. Dar porą bendrai validacijų pridėt ir all good.
+*/
 @Component({
   selector: 'app-expense-form',
   templateUrl: './expenses-form.component.html',

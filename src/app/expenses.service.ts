@@ -3,6 +3,11 @@ import { Injectable } from '@angular/core';
 import { Expense } from './shared/expense';
 import { HttpClient } from '@angular/common/http';
 
+/*
+  Dėl service tai siūlyčiau susikurti atskirą folderį ir ten laikyt services. Pvz.: src/app/services/expenses-service/expenses.service.ts
+  Nestruktūrizuojant, ypač jei daugiau services bus, labai greit pasiklysi, bus chaosas.
+*/
+
 @Injectable({
   providedIn: 'root',
 })
