@@ -8,8 +8,8 @@ import { regulatoryValidator } from './validators/regulatory.validator';
 
 @Component({
   selector: 'app-expense-form',
-  templateUrl: './expenses-form.component.html',
-  styleUrls: ['./expenses-form.component.css'],
+  templateUrl: './expense-form.component.html',
+  styleUrls: ['./expense-form.component.css'],
 })
 export class ExpenseFormComponent implements OnInit {
   @Output() expenseUpdated: EventEmitter<void> = new EventEmitter();

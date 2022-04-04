@@ -10,7 +10,7 @@ import { BudgetsComponent } from './budgets/budgets.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { HomeComponent } from './home/home.component';
 import { ExpenseDetailsComponent } from './expense-details/expense-details.component';
-import { ExpenseFormComponent } from './expenses/expenses-form/expenses-form.component';
+import { ExpenseFormComponent } from './expenses/expenses-form/expense-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
