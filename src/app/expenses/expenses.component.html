@@ -7,6 +7,7 @@
   <tbody>
     <tr *ngFor="let expense of expensesList$ | async">
       <td>
+        <!-- Čia reiktų peržiūrėt, kaip veikia guard, nes su tam tikrais ids spaudžiant console rodo errorus, greičiausiai dėl trūkstamo `id` properčio -->
         <a routerLink="/expense/{{ expense.id }}">{{ expense.name }}</a>
       </td>
       <td>{{ expense.date | date }}</td>
