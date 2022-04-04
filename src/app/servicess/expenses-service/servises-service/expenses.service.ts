@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Expense } from './shared/expense';
+import { Expense } from '../../../shared/expense';
 import { HttpClient } from '@angular/common/http';
 
 /*
